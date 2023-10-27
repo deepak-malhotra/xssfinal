@@ -1,0 +1,42 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <title>Techx2023 Blog</title>  
+    <style>  
+        body {  
+            text-align: center;  
+        }  
+        .header {  
+            position: absolute;  
+            top: 0;  
+            left: 0;  
+            padding: 10px;  
+        }  
+        .comment-form textarea {  
+            width: 50%;  
+            height: 200px;  
+        }  
+    </style>  
+    <script>  
+        function checkForEnter(event) {  
+            if (event.keyCode === 13) {  // 13 is the keyCode for the return key  
+                event.preventDefault();  // prevent the default action (creating a new line)  
+                document.getElementById("commentForm").submit();  // submit the form  
+            }  
+        }  
+    </script>  
+</head>  
+<body>  
+    <div class="header">  
+        <h1>Welcome to Techx2023 !</h1>  
+    </div>  
+    <img src="{{ url_for('static', filename='techx23.jpg') }}" alt="Center Image">  
+    <form action="/" method="post" class="comment-form" id="commentForm">      
+        <textarea name="comment" onkeydown="checkForEnter(event)"></textarea>      
+        <input type="submit" value="Post Comment">      
+    </form>   
+    <hr>      
+    <h2>Comments</h2>      
+    {{ comments|safe }}    
+</body>  
+</html>  
